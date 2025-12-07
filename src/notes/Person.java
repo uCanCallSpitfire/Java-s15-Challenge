@@ -1,0 +1,21 @@
+package notes;
+
+public abstract class Person {
+    protected int id;
+    protected String name;
+
+    public Person(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public abstract String getRole(); // her alt sınıf bunu kendine göre dolduracak
+}
