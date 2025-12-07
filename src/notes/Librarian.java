@@ -11,15 +11,26 @@ public class Librarian extends Person {
         return "Librarian";
     }
 
+    // Kitap ekleme
     public void addBookToLibrary(Library library, Book book) {
-        library.addBook(book);
+        if (library != null && book != null) {
+            library.addBook(book);
+            System.out.println("Librarian " + getName() + " kitap ekledi: " + book.getTitle());
+        }
     }
 
+    // Kitap silme
     public void removeBookFromLibrary(Library library, int bookId) {
-        library.removeBook(bookId);
+        if (library != null) {
+            library.removeBook(bookId);
+            System.out.println("Librarian " + getName() + " kitap sildi: ID " + bookId);
+        }
     }
 
-    public void updateBookInfo(Library library, int bookId, String title, Author author, int price) {
-        library.updateBook(bookId, title, author, price);
+    // Kitap güncelleme
+    public void updateBookInfo(Library library, int bookId, String title, Author author, int price, Category category) {
+        library.updateBook(bookId, title, author, price, category);
     }
+
+
 }

@@ -13,10 +13,12 @@ public class User extends Person {
         borrowedBooks = new ArrayList<>();
     }
 
+    // Ödünç alınan kitap sayısı
     public int borrowed() {
         return borrowedBooks.size();
     }
 
+    // Kullanıcı daha fazla kitap alabilir mi?
     public boolean canBorrow() {
         return borrowed() < maxBooks;
     }
@@ -26,10 +28,10 @@ public class User extends Person {
         return "User";
     }
 
-
+    // Kitap ödünç alma
     public boolean borrowBook(Book book) {
         if (!canBorrow()) {
-            System.out.println("Lan limit dolu, kitap alamıyorsun.");
+            System.out.println("Limit dolu, kitap alamıyorsun.");
             return false;
         }
 
@@ -39,34 +41,47 @@ public class User extends Person {
         }
 
         borrowedBooks.add(book);
-        book.setBorrowedBy(this);
-        book.setBorrowed(true);
+        book.setBorrowedBy(this); // Book sınıfında bu metod olmalı
 
+        System.out.println(getName() + " kitabı ödünç aldı: " + book.getTitle());
         return true;
     }
 
+    // Kitap iade etme
     public boolean returnBook(Book book) {
         if (!borrowedBooks.contains(book)) {
-            System.out.println("Bu kitap sende bile değil, nasıl iade ediyon sen?");
+            System.out.println("Bu kitap sende yok, iade edemezsin.");
             return false;
         }
 
         borrowedBooks.remove(book);
-        book.setBorrowedBy(null);
-        book.setBorrowed(false);
+        book.setBorrowedBy(null); // Book sınıfında bu metod olmalı
 
+        System.out.println(getName() + " kitabı iade etti: " + book.getTitle());
         return true;
     }
 
+    // Ödünç alınan kitapları listeleme
     public List<Book> getBorrowedBooks() {
-        return borrowedBooks;
+        return new ArrayList<>(borrowedBooks); // Encapsulation
     }
 
+    // Maksimum kitap limiti getter/setter
     public int getMaxBooks() {
         return maxBooks;
     }
 
     public void setMaxBooks(int maxBooks) {
         this.maxBooks = maxBooks;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + getId() +
+                ", name='" + getName() + '\'' +
+                ", borrowedBooks=" + borrowedBooks.size() +
+                ", maxBooks=" + maxBooks +
+                '}';
     }
 }
