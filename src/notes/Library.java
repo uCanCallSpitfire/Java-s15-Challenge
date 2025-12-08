@@ -9,17 +9,16 @@ public class Library {
     private Map<Integer, User> users = new HashMap<>();
     private Map<String, Category> categories = new HashMap<>();
 
-    // --- BOOK ---
     public void addBook(Book book) {
         if (book == null) return;
 
         books.put(book.getId(), book);
 
-        // Author ekleme
+
         Author a = book.getAuthor();
         authors.putIfAbsent(a.getName(), a);
 
-        // Category ekleme
+
         Category cat = book.getCategory();
         if (cat != null) {
             categories.putIfAbsent(cat.getName(), cat);
@@ -36,7 +35,7 @@ public class Library {
             return;
         }
 
-        // Kitabı kategorilerden de çıkar
+
         if (book.getCategory() != null) {
             book.getCategory().removeBook(book);
         }
@@ -44,7 +43,7 @@ public class Library {
         System.out.println("Kitap silindi -> id: " + id);
     }
 
-    // Güncelleme artık Category ile birlikte
+
     public void updateBook(int id, String title, Author author, int price, Category category) {
         Book b = books.get(id);
         if (b == null) {
@@ -53,7 +52,7 @@ public class Library {
         }
         b.updateBookInfo(title, author, price, category);
 
-        // Yeni kategori varsa Library kategorisine ekle
+
         if (category != null) {
             categories.putIfAbsent(category.getName(), category);
         }
@@ -82,7 +81,7 @@ public class Library {
         return result;
     }
 
-    // --- CATEGORY ---
+
     public void addCategory(Category category) {
         if (category != null) {
             categories.putIfAbsent(category.getName(), category);
@@ -102,7 +101,7 @@ public class Library {
         }
     }
 
-    // --- USERS ---
+
     public void addUser(User user) {
         if (user != null) users.put(user.getId(), user);
     }
@@ -111,7 +110,6 @@ public class Library {
         return users.get(id);
     }
 
-    // --- GETTERS ---
     public Map<Integer, Book> getBooks() {
         return books;
     }

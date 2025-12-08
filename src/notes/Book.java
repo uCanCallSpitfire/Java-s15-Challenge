@@ -7,33 +7,31 @@ public class Book {
     private Author author;
     private int price;
     private User borrowedBy;
-    private Category category; // Category eklendi
+    private Category category;
 
-    // Constructor
     public Book(int id, String title, Author author, int price, Category category) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.price = price;
-        this.borrowedBy = null;  // kitap başlangıçta rafta
+        this.borrowedBy = null;
         this.category = category;
 
-        author.addBook(this);         // Composition: yazarın listesine kitap ekle
+        author.addBook(this);
         if (category != null) {
-            category.addBook(this);   // Kategorinin set'ine ekle
+            category.addBook(this);
         }
     }
 
-    // Kitap bilgilerini güncelle
     public void updateBookInfo(String title, Author author, int price, Category category) {
         this.title = title;
         this.author = author;
         this.price = price;
-        setCategory(category); // kategoriyi güncelle
+        setCategory(category);
         System.out.println("Kitap bilgileri güncellendi: " + title);
     }
 
-    // Kitap ödünç alma
+
     public boolean borrowBook(User user) {
         if (borrowedBy != null) {
             System.out.println("Kitap zaten ödünçte: " + title);
@@ -44,7 +42,6 @@ public class Book {
         return true;
     }
 
-    // Kitap iade
     public void returnBook() {
         if (borrowedBy != null) {
             System.out.println(borrowedBy.getName() + " kitabı iade etti: " + title);
@@ -54,7 +51,7 @@ public class Book {
         }
     }
 
-    // Getters ve Setters
+
     public int getId() { return id; }
     public String getTitle() { return title; }
     public Author getAuthor() { return author; }
@@ -76,10 +73,9 @@ public class Book {
         this.borrowedBy = borrowedBy;
     }
 
-    // Kitap ödünçte mi?
     public boolean isBorrowed() { return borrowedBy != null; }
 
-    // toString ile kolay yazdırma
+
     @Override
     public String toString() {
         return "Book{" +

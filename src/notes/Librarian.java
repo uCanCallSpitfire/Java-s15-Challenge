@@ -11,7 +11,6 @@ public class Librarian extends Person {
         return "Librarian";
     }
 
-    // Kitap ekleme
     public void addBookToLibrary(Library library, Book book) {
         if (library != null && book != null) {
             library.addBook(book);
@@ -19,7 +18,7 @@ public class Librarian extends Person {
         }
     }
 
-    // Kitap silme
+
     public void removeBookFromLibrary(Library library, int bookId) {
         if (library != null) {
             library.removeBook(bookId);
@@ -27,7 +26,7 @@ public class Librarian extends Person {
         }
     }
 
-    // Kitap güncelleme
+
     public void updateBookInfo(Library library, int bookId, String title, Author author, int price, Category category) {
         library.updateBook(bookId, title, author, price, category);
     }

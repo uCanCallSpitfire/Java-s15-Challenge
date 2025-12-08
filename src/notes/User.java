@@ -13,12 +13,12 @@ public class User extends Person {
         borrowedBooks = new ArrayList<>();
     }
 
-    // Ödünç alınan kitap sayısı
+
     public int borrowed() {
         return borrowedBooks.size();
     }
 
-    // Kullanıcı daha fazla kitap alabilir mi?
+
     public boolean canBorrow() {
         return borrowed() < maxBooks;
     }
@@ -41,13 +41,13 @@ public class User extends Person {
         }
 
         borrowedBooks.add(book);
-        book.setBorrowedBy(this); // Book sınıfında bu metod olmalı
+        book.setBorrowedBy(this);
 
         System.out.println(getName() + " kitabı ödünç aldı: " + book.getTitle());
         return true;
     }
 
-    // Kitap iade etme
+
     public boolean returnBook(Book book) {
         if (!borrowedBooks.contains(book)) {
             System.out.println("Bu kitap sende yok, iade edemezsin.");
@@ -55,18 +55,18 @@ public class User extends Person {
         }
 
         borrowedBooks.remove(book);
-        book.setBorrowedBy(null); // Book sınıfında bu metod olmalı
+        book.setBorrowedBy(null);
 
         System.out.println(getName() + " kitabı iade etti: " + book.getTitle());
         return true;
     }
 
-    // Ödünç alınan kitapları listeleme
+
     public List<Book> getBorrowedBooks() {
-        return new ArrayList<>(borrowedBooks); // Encapsulation
+        return new ArrayList<>(borrowedBooks);
     }
 
-    // Maksimum kitap limiti getter/setter
+
     public int getMaxBooks() {
         return maxBooks;
     }

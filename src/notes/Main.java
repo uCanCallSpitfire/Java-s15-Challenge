@@ -8,8 +8,8 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         Library library = new Library();
+        seata.loadSampleBooks(library);
 
-        // Örnek yazar ve kategori
         Author defaultAuthor = new Author("Default Author");
         Category defaultCategory = new Category("Genel");
 
@@ -27,10 +27,9 @@ public class Main {
             System.out.println("0. Çıkış");
             System.out.print("Seçiminiz: ");
             int choice = sc.nextInt();
-            sc.nextLine(); // buffer temizle
-
+            sc.nextLine();
             switch (choice) {
-                case 1 -> { // Kitap ekle
+                case 1 -> {
                     System.out.print("Kitap ID: ");
                     int id = sc.nextInt();
                     sc.nextLine();
@@ -49,7 +48,7 @@ public class Main {
                     Book book = new Book(id, title, author, price, category);
                     library.addBook(book);
                 }
-                case 2 -> { // Kitap güncelle
+                case 2 -> {
                     System.out.print("Güncellenecek Kitap ID: ");
                     int id = sc.nextInt();
                     sc.nextLine();

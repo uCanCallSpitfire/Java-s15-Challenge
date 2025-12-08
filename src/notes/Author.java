@@ -13,23 +13,21 @@ public class Author {
         this.booksWritten = new ArrayList<>();
     }
 
-    // Kitap ekleme (Composition)
     public void addBook(Book book) {
         if (book != null && !booksWritten.contains(book)) {
             booksWritten.add(book);
         }
     }
 
-    // Yazara ait kitapları listeler
+
     public List<Book> getBooksWritten() {
-        return new ArrayList<>(booksWritten); // encapsulation: dışarıya kopya veriyoruz
+        return new ArrayList<>(booksWritten);
     }
 
     public String getName() {
         return this.name;
     }
 
-    // toString() ile kolay yazdırma
     @Override
     public String toString() {
         return "Author{" +

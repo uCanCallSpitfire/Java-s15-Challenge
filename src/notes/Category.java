@@ -21,7 +21,7 @@ public class Category {
         }
     }
 
-    // Kitap çıkar
+
     public void removeBook(Book book) {
         if (book != null && books.remove(book)) {
             System.out.println("Kitap silindi: " + book.getTitle() + " -> Kategori: " + name);
@@ -30,7 +30,7 @@ public class Category {
         }
     }
 
-    // Kategorideki kitapları listele
+
     public void listBooks() {
         System.out.println("Kategori: " + name + " kitap listesi:");
         if (books.isEmpty()) {
@@ -42,12 +42,12 @@ public class Category {
         }
     }
 
-    // Getter
+
     public String getName() {
         return name;
     }
 
-    // Encapsulation: dışarıya setin kopyasını veriyoruz
+
     public Set<Book> getBooks() {
         return new HashSet<>(books);
     }

@@ -17,5 +17,5 @@ public abstract class Person {
         return name;
     }
 
-    public abstract String getRole(); // her alt sınıf bunu kendine göre dolduracak
+    public abstract String getRole();
 }
